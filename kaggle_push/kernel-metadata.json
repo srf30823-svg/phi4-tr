@@ -1,7 +1,7 @@
 {
-  "id": "s144rf/phi4-mini-tr-100k-v2",
-  "title": "phi4-mini-tr-100k-v2",
-  "code_file": "train_lightning_2xT4.ipynb",
+  "id": "s144rf/phi4-mini-tr-100k-kaggle",
+  "title": "phi4-mini-tr-100k-kaggle",
+  "code_file": "phi4_tr_100k_kaggle.ipynb",
   "language": "python",
   "kernel_type": "notebook",
   "is_private": false,
