@@ -1,0 +1,84 @@
+# Phi-4 Mini LoRA Fine-tuning Config - KuroNeko TR
+# LitGPT formatında
+# Hedef: Türkçe instruction tuning, akıl yürütme, kod üretimi
+
+# Model
+model_name: microsoft/Phi-4-mini-instruct
+checkpoint_dir: checkpoints/microsoft/Phi-4-mini-instruct
+
+# LoRA
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_query: true
+lora_key: true
+lora_value: true
+lora_projection: true
+lora_mlp: true
+lora_head: false
+
+# Training
+precision: bf16-mixed
+max_seq_length: 2048
+max_new_tokens: 512
+batch_size: 2
+micro_batch_size: 1
+gradient_accumulation_steps: 16
+max_epochs: 3
+max_steps: -1
+learning_rate: 2.0e-4
+weight_decay: 0.01
+warmup_steps: 50
+lr_scheduler: cosine
+gradient_clip_val: 1.0
+
+# Data
+data:
+  class_path: litgpt.data.Alpaca2k
+  init_args:
+    mask_prompt: false
+    val_split_fraction: 0.05
+    prompt_style: alpaca
+    ignore_index: -100
+    seed: 42
+    num_workers: 4
+
+# Eval
+eval:
+  interval: 100
+  max_iters: 100
+  max_new_tokens: 512
+  initial_validation: false
+
+# Logging
+log_interval: 10
+save_interval: 200
+
+# Optimizer
+optimizer:
+  class_name: torch.optim.AdamW
+  init_args:
+    lr: 2.0e-4
+    weight_decay: 0.01
+    betas: [0.9, 0.999]
+    eps: 1.0e-8
+
+# Quantization (QLoRA için)
+quantize: null
+# QLoRA için: quantize: bitsandbytes.nf4
+
+# Seed
+seed: 42
+
+# Devices
+devices: 1
+strategy: auto
+num_nodes: 1
+
+# Resume
+resume: null
+# resume: path/to/checkpoint
+
+# HF Hub
+hf_repo: KuroNeko1234t/phi4-mini-tr
+push_to_hub: true
