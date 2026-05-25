@@ -1,0 +1,13 @@
+{
+    "id": "s144rf/kuroneko-phi4-tr-v3c",
+    "title": "KuroNeko Phi4 TR v3c - Turkish Fine-tune",
+    "code_file": "phi4_turkish_train.ipynb",
+    "language": "python",
+    "kernel_type": "notebook",
+    "is_private": false,
+    "enable_gpu": true,
+    "enable_internet": true,
+    "dataset_sources": [],
+    "competition_sources": [],
+    "kernel_sources": []
+}
